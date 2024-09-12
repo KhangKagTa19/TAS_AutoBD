@@ -56,8 +56,12 @@ from get_info import get_company_information
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 print("Using device:", device)
+# Prompt the user to input the API key
+api_key = input("Please enter your OpenAI API key: ")
 
-os.environ['OPENAI_API_KEY'] = "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"
+# Set the key as an environment variable
+os.environ['OPENAI_API_KEY'] = api_key
+
 
 llm = ChatOpenAI(model="gpt-4o", temperature=1, api_key=os.environ["OPENAI_API_KEY"])
 
