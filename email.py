@@ -11,13 +11,12 @@ def send_email(to_email, subject, content):
         html_content=content)
     try:
         # Prompt the user to input the SendGrid API key
-        sendgrid_api_key = input("Please enter your SendGrid API key: ")
-
-        # Set the key as an environment variable
-        os.environ['SENDGRID_API_KEY'] = sendgrid_api_key
+        # Retrieve the SendGrid API key from environment variables
+        sendgrid_api_key = os.getenv('SENDGRID_API_KEY')
 
         # Initialize the SendGrid client
-        sg = SendGridAPIClient(api_key=os.environ['SENDGRID_API_KEY'])
+        sg = SendGridAPIClient(api_key=sendgrid_api_key)
+
         response = sg.send(message)
         return True, f"Email sent successfully. Status code: {response.status_code}"
     except Exception as e:

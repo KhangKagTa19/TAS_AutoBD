@@ -57,13 +57,10 @@ from get_info import get_company_information
 device = "cuda" if torch.cuda.is_available() else "cpu"
 print("Using device:", device)
 # Prompt the user to input the API key
-api_key = input("Please enter your OpenAI API key: ")
-
-# Set the key as an environment variable
-os.environ['OPENAI_API_KEY'] = api_key
+api_key = os.getenv('OPENAI_API_KEY')
 
 
-llm = ChatOpenAI(model="gpt-4o", temperature=1, api_key=os.environ["OPENAI_API_KEY"])
+llm = ChatOpenAI(model="gpt-4o", temperature=1, api_key=api_key )
 
 encoder = OpenAIEmbeddings(model='text-embedding-3-large') 
 #     encoder = HuggingFaceEmbeddings()
