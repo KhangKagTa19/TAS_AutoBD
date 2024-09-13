@@ -10,7 +10,7 @@ from tavily import TavilyClient
 
 def get_company_information(company_name, another_url):
     print("CRAWLING")
-    tavily_client = TavilyClient(api_key="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")
+    tavily_client = TavilyClient(api_key="TAIVILY_API_KEY")
 
     web_path = []
     queries = [

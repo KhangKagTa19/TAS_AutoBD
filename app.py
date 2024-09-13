@@ -57,6 +57,8 @@ from get_info import get_company_information
 device = "cuda" if torch.cuda.is_available() else "cpu"
 print("Using device:", device)
 # Prompt the user to input the API key
+os.environ['OPENAI_API_KEY'] = "OPENAI_API_KEY"
+
 api_key = os.getenv('OPENAI_API_KEY')
 
 
